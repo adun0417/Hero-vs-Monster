@@ -1,13 +1,13 @@
 class Monster
-  attr_accessor :name, :hp, :ap  # 在class Monster裡也必須要設定attr_accessor :hp, :name
-                                 # 讓外部的這一個attack方法可以抓到monster.hp這個屬性。 #line:95
+  attr_accessor :name, :hp, :ap
 
 
-  def initialize(name,hp,ap) #傳入資料為 name,hp,ap
-    @name = name       # 用 name 設定 attributes @name
-    @hp = hp           # 設定一個名為 hp（生命值）的 attribute
-    @ap = ap           # 設定一個名為 ap（生命值）的 attribute
-    @alive = true      # 怪獸剛被創造，所以預設為 true，表示怪獸創造時一定是活著的
+
+  def initialize(name,hp,ap)
+    @name = name
+    @hp = hp
+    @ap = ap
+    @alive = true
 
     puts "遇到怪獸 #{@name}"
     puts "生命力(HP) #{@hp}"
@@ -20,8 +20,8 @@ class Monster
   end
 
   def attack(enemy)
-    damage = rand(@ap/2..@ap) # 傷害會隨機取攻擊力的一半（AP／2）至 AP 的數字
-    enemy.hp = enemy.hp - damage #新的生命力是生命力減去傷害
+    damage = rand(@ap/2..@ap)
+    enemy.hp = enemy.hp - damage
 
     puts "#{@name}發動攻擊！"
     puts "#{enemy.name} 受到 #{damage} 點傷害！"
@@ -107,9 +107,8 @@ end
 
 #----------------------執行過程----------------------#
 
-monster = Monster.new("Dr.boom",110,30) # 用 Monster class 創造一個 name 為 Dr.boom 的物件，放入 monster 這個變數裡
-holy_knight = Hero.new("聖光大螺絲",110,30) #對應到需要小寫的物件名稱，習慣用底線分開英文大字
-#hero = Hero.new("炸雞勇者",200,30)
+monster = Monster.new("Dr.boom",110,30)
+holy_knight = HolyKnight.new("聖光大螺絲",110,30)
 
 while holy_knight.is_alive? && monster.is_alive?
 
